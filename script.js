@@ -93,10 +93,9 @@ function sliderText(container, track, btnPrev, btnNext, items) {
 
     setTimeout(() => {
       sliderItems.forEach((item) => {
-        item.style.transition = ".3s";
         item.style.filter = "blur(0px)";
       });
-    }, 300);
+    }, 450);
 
     const itemsLeft = itemsCount - (Math.abs(position) + slidesToShow * itemWidth) / itemWidth;
 
