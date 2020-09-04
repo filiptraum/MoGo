@@ -162,3 +162,42 @@ window.addEventListener('keyup', (e) => {
   }
   
 });
+
+// serviceBtnChange
+const changeBtn = (itemsSelector, btnSelector, contentSelector, activeContent, activeBtn) => {
+  const itemsBlock = document.querySelector(itemsSelector);
+  const btn = document.querySelectorAll(btnSelector);
+  const content = document.querySelectorAll(contentSelector);
+
+  function hideContent() {
+    content.forEach(item => {
+      item.classList.remove(activeContent);
+    });
+
+    btn.forEach(item => {
+      item.classList.remove(activeBtn);
+    });
+  }
+
+  function showContent(i = 0) {
+    content[i].classList.add(activeContent);
+    btn[i].classList.add(activeBtn);
+  }
+
+  hideContent();
+  showContent();
+
+  itemsBlock.addEventListener('click', (e) => {
+    const target = e.target;
+    if (target.classList.contains(btnSelector.replace(/\./, ""))) {
+      btn.forEach((item, i) => {
+        if (target == item) {
+          hideContent();
+          showContent(i);
+        }
+      });
+    }
+  });
+};
+
+changeBtn(".service2__items", ".service2__button", ".service2__hidden-text", "service2_active", "activeBtn");
